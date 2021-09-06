@@ -9,7 +9,7 @@ from transformers import BertTokenizer
 import torch
 import math
 import numpy as np
-from document_bert.patent_utils import *
+from document_bert.document_search.patent_utils import *
 import argparse
 
 # parser = argparse.ArgumentParser(description='Process some integers.')

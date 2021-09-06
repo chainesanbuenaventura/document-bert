@@ -4,13 +4,13 @@ import sys
 from clean import TextCleaner
 
 from transformers import BertPreTrainedModel, BertConfig, BertModel
-from document_bert.encode import BERTEncoder
+from document_bert.document_search.encode import BERTEncoder
 import torch
 import math
 import datetime
 import numpy as np
 import gc
-from document_bert.patent_utils import *
+from document_bert.document_search.patent_utils import *
 
 class EarlyStopping(object):
     def __init__(self, model, patience, start_time, verbose=True):

@@ -1,7 +1,7 @@
 import pandas as pd
 import re
 import sys
-from document_bert.clean import TextCleaner
+from document_bert.document_search.clean import TextCleaner
 from transformers import BertPreTrainedModel, BertConfig, BertModel
 import torch
 import math
