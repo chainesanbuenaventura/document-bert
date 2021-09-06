@@ -2,7 +2,7 @@ import pandas as pd
 import re
 import sys
 sys.path.append("../")
-from clean import TextCleaner
+from document_bert.document_search.clean import TextCleaner
 
 from transformers import BertPreTrainedModel, BertConfig, BertModel
 from transformers import BertTokenizer
