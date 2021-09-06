@@ -11,8 +11,8 @@ import numpy as np
 import gc
 from tqdm import tqdm
 import time
-from patent_utils import *
-from model_utils import *
+from document_bert.patent_utils import *
+from document_bert.model_utils import *
 
 class BERTSimilarityTrainer(object):
     def __init__(self, patent_documents: list, tsd_documents: list, labels: list, threshold: float = 0.5, patience: int = 3):
