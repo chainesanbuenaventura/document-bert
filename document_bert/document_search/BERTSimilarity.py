@@ -4,7 +4,7 @@ import sys
 from clean import TextCleaner
 
 from transformers import BertPreTrainedModel, BertConfig, BertModel
-from encode import BERTEncoder
+from document_bert.document_search.encode import BERTEncoder
 import torch
 import math
 import numpy as np
