@@ -44,6 +44,11 @@ class EarlyStopping(object):
             f'models/{self.start_time}'
             + f'_{model_name}.pth'
         )
+        path_to_compiled_checkpoint = (
+            f'models/{self.start_time}'
+            + f'_{model_name}.pth'
+        )
         torch.save(self.model, path_to_checkpoint)
+        torch.jit.save(self.model, path_to_compiled_checkpoint)
         print(f"Current best model saved as {path_to_checkpoint} at epoch {epoch}.")
     
