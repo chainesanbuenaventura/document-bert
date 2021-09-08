@@ -85,7 +85,7 @@ class BERTSimilarityTrainer(object):
         return valid_acc
         
     def train(self):
-        print(f"Start training and saving model to {self.model_path}..."
+        print(f"Start training and saving model to {self.model_path}...")
         patent_representations, tsd_representations, correct_output, tsd_dict = self.bertEncoder.tokenize_train_data()
         self.tsd_dict = tsd_dict
         gc.collect()
