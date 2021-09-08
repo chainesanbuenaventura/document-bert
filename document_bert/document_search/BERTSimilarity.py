@@ -15,7 +15,7 @@ from document_bert.document_search.patent_utils import *
 from document_bert.document_search.model_utils import *
 
 class BERTSimilarityTrainer(object):
-    def __init__(self, patent_documents: list, tsd_documents: list, labels: list, threshold: float = 0.5, patience: int = 3):
+    def __init__(self, patent_documents: list, tsd_documents: list, labels: list, path: str = '.'. threshold: float = 0.5, patience: int = 3):
         self.patent_documents = patent_documents
         self.tsd_documents = tsd_documents
         self.labels = labels
@@ -33,7 +33,9 @@ class BERTSimilarityTrainer(object):
         self.model = self.get_model()
         self.start_time = get_datetime()
         self.patience = patience
-        self.early_stopping = EarlyStopping(self.model, self.patience, self.start_time, verbose=True)
+        self.path = path
+        self.model_path = f"{self.path}/models"
+        self.early_stopping = EarlyStopping(self.model, self.patience, self.start_time, self.model_path, verbose=True)
         self.optimizer = torch.optim.Adam(self.model.parameters(),
                                      weight_decay=0,
                                      lr=5e-5)

@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 import sys
+import os
 from document_bert.document_search.clean import TextCleaner
 
 from transformers import BertPreTrainedModel, BertConfig, BertModel
@@ -13,7 +14,7 @@ import gc
 from document_bert.document_search.patent_utils import *
 
 class EarlyStopping(object):
-    def __init__(self, model, patience, start_time, verbose=True):
+    def __init__(self, model, patience, start_time, model_path, verbose=True):
         self.patience = patience
         self.verbose = verbose
         self.early_stopping_counter = 0
@@ -21,6 +22,7 @@ class EarlyStopping(object):
         self.early_stop = False
         self.model = model
         self.start_time = start_time
+        self.model_path = model_path
    
     def __call__(self):
         if self.early_stopping_counter > self.patience:
@@ -40,13 +42,16 @@ class EarlyStopping(object):
     
     def save_best_model(self, epoch):
         model_name = 'BERTsimilaritymodel'
+        if os.path.exists(self.model_path) != True:
+            os.mkdir(self.model_path)
+            
         path_to_checkpoint = (
-            f'models/{self.start_time}'
+            f'{self.model_path}/{self.start_time}'
             + f'_{model_name}.pth'
         )
         path_to_compiled_checkpoint = (
-            f'models/{self.start_time}'
-            + f'_{model_name}.pth'
+            f'{self.model_path}/{self.start_time}'
+            + f'_{model_name}_compiled.pth'
         )
         torch.save(self.model, path_to_checkpoint)
         torch.jit.save(self.model, path_to_compiled_checkpoint)
