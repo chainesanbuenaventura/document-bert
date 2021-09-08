@@ -15,7 +15,7 @@ from document_bert.document_search.patent_utils import *
 from document_bert.document_search.model_utils import *
 
 class BERTSimilarityTrainer(object):
-    def __init__(self, patent_documents: list, tsd_documents: list, labels: list, path: str = '.'. threshold: float = 0.5, patience: int = 3):
+    def __init__(self, patent_documents: list, tsd_documents: list, labels: list, path: str = '.', threshold: float = 0.5, patience: int = 3):
         self.patent_documents = patent_documents
         self.tsd_documents = tsd_documents
         self.labels = labels
