@@ -54,6 +54,6 @@ class EarlyStopping(object):
             + f'_{model_name}_state_dict.pth'
         )
         torch.save(self.model, path_to_checkpoint)
-        torch.save(self.model.state_dict, 'path_to_checkpoint_state_dict')
+        torch.save(self.model.state_dict, path_to_checkpoint_state_dict)
         print(f"Current best model saved as {path_to_checkpoint} at epoch {epoch}.")
     
